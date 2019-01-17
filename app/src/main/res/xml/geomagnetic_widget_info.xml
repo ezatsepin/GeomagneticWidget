@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:configure="com.ezatsepin.geomagneticwidget.GeomagneticWidgetConfigureActivity"
+    android:initialKeyguardLayout="@layout/geomagnetic_widget"
+    android:initialLayout="@layout/geomagnetic_widget"
+    android:minHeight="50dp"
+    android:minWidth="100dp"
+    android:previewImage="@drawable/example_appwidget_preview"
+    android:resizeMode="horizontal|vertical"
+    android:updatePeriodMillis="43200000"
+    android:widgetCategory="home_screen|keyguard"></appwidget-provider>
