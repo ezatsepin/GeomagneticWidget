@@ -97,7 +97,7 @@ public class GeomagneticWidget extends AppWidgetProvider {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
 
-            String str = "http://tyretrader.ua/utils/test2.php";
+            String str = "http://teplo-vsegda.com.ua/test2.php";
             URLConnection urlConn = null;
             BufferedReader bufferedReader = null;
             try
