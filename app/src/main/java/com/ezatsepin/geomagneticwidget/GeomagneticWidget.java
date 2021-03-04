@@ -1,30 +1,24 @@
 package com.ezatsepin.geomagneticwidget;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.StrictMode;
 import android.support.v4.content.ContextCompat;
-import android.text.Html;
-import android.text.Spanned;
 import android.util.Log;
-import android.webkit.WebView;
 import android.widget.RemoteViews;
 import android.widget.Toast;
-import android.app.PendingIntent;
-import android.content.Intent;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Iterator;
@@ -68,7 +62,10 @@ public class GeomagneticWidget extends AppWidgetProvider {
 
     @Override
     public void onEnabled(Context context) {
-        // Enter relevant functionality for when the first widget is created
+        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.geomagnetic_widget);
+        ComponentName watchWidget = new ComponentName(context, GeomagneticWidget.class);
+
+        remoteViews.setOnClickPendingIntent(R.id.widget_layout, getPendingSelfIntent(context, GM_WIDGET_CLICKED));
     }
 
     @Override
@@ -89,15 +86,13 @@ public class GeomagneticWidget extends AppWidgetProvider {
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.geomagnetic_widget);
             ComponentName watchWidget = new ComponentName(context, GeomagneticWidget.class);
 
-            //Spanned html = Html.fromHtml("<h2 style='color: red;'><font color='#145A14'>text</font></h2><br><table><tr><td>1</td><td>2</td></tr><tr><td>3</td><td>4</td></tr></table>");
-
             Resources res = context.getResources();
 
 
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
 
-            String str = "http://teplo-vsegda.com.ua/test2.php";
+            String str = "http://localhost/test2.php";
             URLConnection urlConn = null;
             BufferedReader bufferedReader = null;
             try
